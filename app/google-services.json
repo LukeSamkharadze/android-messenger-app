@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "923829867906",
+    "project_id": "messenger-app-3425f",
+    "storage_bucket": "messenger-app-3425f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923829867906:android:cac435f9f0b28d96c46b9b",
+        "android_client_info": {
+          "package_name": "com.freeuni.messenger_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "923829867906-78ld3682q6r9guue145iet5echeaf95q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkOOgmemTgRxRV1AWaMAwKb819PzwsMSk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "923829867906-78ld3682q6r9guue145iet5echeaf95q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923829867906:android:817270344a1888c7c46b9b",
+        "android_client_info": {
+          "package_name": "com.lsamk19.messengerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "923829867906-78ld3682q6r9guue145iet5echeaf95q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkOOgmemTgRxRV1AWaMAwKb819PzwsMSk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "923829867906-78ld3682q6r9guue145iet5echeaf95q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
