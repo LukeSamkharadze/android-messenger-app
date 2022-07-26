@@ -8,15 +8,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
 
-class AuthRepository {
-  private lateinit var application: Application
-  private lateinit var firebaseUserMutableLiveData: MutableLiveData<FirebaseUser>
-  private lateinit var auth: FirebaseAuth
+class AuthRepository(private var application: Application) {
+  private var firebaseUserMutableLiveData: MutableLiveData<FirebaseUser> = MutableLiveData()
+  private var auth: FirebaseAuth = FirebaseAuth.getInstance()
 
-  fun init(application: Application) {
-    this.application = application
-    firebaseUserMutableLiveData = MutableLiveData()
-    auth = FirebaseAuth.getInstance()
+  init {
     if (auth.currentUser != null) {
       firebaseUserMutableLiveData.postValue(auth.currentUser)
     }
