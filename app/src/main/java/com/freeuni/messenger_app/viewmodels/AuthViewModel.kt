@@ -14,23 +14,15 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
 
   val user: LiveData<FirebaseUser?> = repository.getFirebaseUserLiveData()
 
-  fun register(email: String, pass: String, callback: ((o: Task<AuthResult>) -> Unit)?) {
-    repository.register(email, pass, callback)
+  fun register(email: String, pass: String): Task<AuthResult> {
+    return repository.register(email, pass)
   }
 
-  fun signIn(email: String, pass: String, callback: ((o: Task<AuthResult>) -> Unit)?) {
-    repository.login(email, pass, callback)
+  fun signIn(email: String, pass: String): Task<AuthResult> {
+    return repository.login(email, pass)
   }
 
   fun signOut() {
     repository.signOut()
-  }
-
-  fun signIn(email: String, pass: String) {
-    this.signIn(email, pass, null)
-  }
-
-  fun register(email: String, pass: String) {
-    this.register(email, pass, null)
   }
 }
