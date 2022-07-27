@@ -9,7 +9,7 @@ import com.google.firebase.auth.FirebaseUser
 class AuthViewModel(application: Application) : AndroidViewModel(application) {
   private val repository: AuthRepository = AuthRepository(application)
 
-  val userData: LiveData<FirebaseUser> = repository.getFirebaseUserLiveData()
+  val user: LiveData<FirebaseUser> = repository.getFirebaseUserLiveData()
 
   fun register(email: String, pass: String) {
     repository.register(email, pass)
