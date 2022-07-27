@@ -43,8 +43,6 @@ class SignUpFragment : Fragment() {
       }
 
       viewModel.register(email, password)
-
-      findNavController().navigate(R.id.signInFragment)
     }
 
     return binding.root
