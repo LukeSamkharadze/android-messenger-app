@@ -35,11 +35,11 @@ class AuthActivity : AppCompatActivity() {
         .getInstance(application)
     )[AuthViewModel::class.java]
 
-    viewModel.user.observe(this) {
-      if (it != null) {
-        finish()
-        startActivity(Intent(this, HomeActivity::class.java))
-      }
-    }
+//    viewModel.user.observe(this) {
+//      if (it != null) {
+//        finish()
+//        startActivity(Intent(this, HomeActivity::class.java))
+//      }
+//    }
   }
 }
