@@ -11,10 +11,11 @@ import com.freeuni.messenger_app.R
 import com.freeuni.messenger_app.activities.auth.AuthActivity
 import com.freeuni.messenger_app.databinding.ActivityAuthBinding
 import com.freeuni.messenger_app.databinding.ActivityHomeBinding
+import com.freeuni.messenger_app.viewmodels.HomeViewModel
 
 class HomeActivity : AppCompatActivity() {
   private lateinit var binding: ActivityHomeBinding
-  private lateinit var viewModel: AuthViewModel
+  private lateinit var viewModel: HomeViewModel
 //  private lateinit var navControler: NavController
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,22 +28,18 @@ class HomeActivity : AppCompatActivity() {
 //      supportFragmentManager.findFragmentById(R.id.authNavHostFragment) as NavHostFragment
 //    navControler = navHostFragment.navController
 
-//    viewModel = ViewModelProvider(
-//      this, ViewModelProvider.AndroidViewModelFactory
-//        .getInstance(application)
-//    )[AuthViewModel::class.java]
-//
-//    binding.signOutButton.setOnClickListener {
-//      viewModel.signOut()
-//      finish()
-//      startActivity(Intent(this, AuthActivity::class.java))
-//    }
-//
-//    viewModel.user.observe(this) {
-//      if (it == null) {
-//        finish()
-//        startActivity(Intent(this, HomeActivity::class.java))
-//      }
-//    }
+    viewModel =
+      ViewModelProvider(this)[HomeViewModel::class.java]
+
+    binding.signOutButton.setOnClickListener {
+      viewModel.signOut()
+    }
+
+    viewModel.user.observe(this) {
+      if (it == null) {
+        finish()
+        startActivity(Intent(this, AuthActivity::class.java))
+      }
+    }
   }
 }
