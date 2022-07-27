@@ -1,21 +1,23 @@
-package com.freeuni.messenger_app.fragments
+package com.freeuni.messenger_app.activities.auth
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.codingstuff.loginsignupmvvm.viewmodel.AuthViewModel
 import com.freeuni.messenger_app.R
 import com.freeuni.messenger_app.databinding.FragmentSignInBinding
 
+
 class SignInFragment : Fragment() {
   private lateinit var binding: FragmentSignInBinding
   private lateinit var viewModel: AuthViewModel
+  private lateinit var navController: NavController
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
@@ -24,10 +26,8 @@ class SignInFragment : Fragment() {
     // Inflate the layout for this fragment
     binding = FragmentSignInBinding.inflate(inflater, container, false)
 
-    viewModel = ViewModelProvider(
-      this, ViewModelProvider.AndroidViewModelFactory
-        .getInstance(requireActivity().application)
-    ).get(AuthViewModel::class.java)
+    viewModel =
+      ViewModelProvider(requireActivity())[AuthViewModel::class.java]
 
     binding.registerButton.setOnClickListener {
       findNavController().navigate(R.id.signUpFragment)
@@ -48,10 +48,6 @@ class SignInFragment : Fragment() {
       }
 
       viewModel.signIn(email, password)
-    }
-
-    viewModel.user.observe(requireActivity()) {
-      Log.d("app", it.toString())
     }
 
     return binding.root

@@ -10,7 +10,10 @@
     android:supportsRtl="true"
     android:theme="@style/Theme.MessengerApp">
     <activity
-      android:name=".activities.AuthActivity"
+      android:name=".activities.auth.AuthActivity"
+      android:exported="false" />
+    <activity
+      android:name=".activities.home.HomeActivity"
       android:exported="false" />
     <activity
       android:name=".MainActivity"

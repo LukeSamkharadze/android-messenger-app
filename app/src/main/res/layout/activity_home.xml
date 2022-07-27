@@ -4,13 +4,13 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".activities.auth.AuthActivity">
+  tools:context=".activities.home.HomeActivity">
 
-  <androidx.fragment.app.FragmentContainerView
-    android:id="@+id/authNavHostFragment"
-    android:name="androidx.navigation.fragment.NavHostFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:defaultNavHost="true"
-    app:navGraph="@navigation/nav_graph" />
+  <Button
+    android:id="@+id/signOutButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Sign out"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

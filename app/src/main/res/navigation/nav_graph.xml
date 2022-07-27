@@ -7,13 +7,13 @@
 
   <fragment
     android:id="@+id/signInFragment"
-    android:name="com.freeuni.messenger_app.fragments.SignInFragment"
+    android:name="com.freeuni.messenger_app.activities.auth.SignInFragment"
     android:label="SignInFragment"
     tools:layout="@layout/fragment_sign_in" />
 
   <fragment
     android:id="@+id/signUpFragment"
-    android:name="com.freeuni.messenger_app.fragments.SignUpFragment"
+    android:name="com.freeuni.messenger_app.activities.auth.SignUpFragment"
     android:label="SignUpFragment"
     tools:layout="@layout/fragment_sign_up" />
 </navigation>
