@@ -1,9 +1,10 @@
-package com.freeuni.messenger_app
+package com.freeuni.messenger_app.activities
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import com.freeuni.messenger_app.R
 
-class MainActivity : AppCompatActivity() {
+class AuthActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_auth)
