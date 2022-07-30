@@ -26,8 +26,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     return userRepository.getProfilePicUrl(userId)
   }
 
-  fun saveUser(uid: String, email: String, bio: String, profile: String): Task<Void> {
-    return userRepository.saveUser(uid, email, bio, profile)
+  fun saveUser(uid: String, email: String, bio: String): Task<Void> {
+    return userRepository.saveUser(uid, email, bio)
   }
 
   fun signOut() {

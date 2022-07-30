@@ -16,17 +16,19 @@ import com.freeuni.messenger_app.databinding.ActivityAuthBinding
 import com.freeuni.messenger_app.databinding.ActivityHomeBinding
 import com.freeuni.messenger_app.viewmodels.HomeViewModel
 import com.google.firebase.auth.FirebaseUser
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
+@Suppress("DEPRECATION")
 class HomeActivity : AppCompatActivity() {
   private lateinit var binding: ActivityHomeBinding
   private lateinit var viewModel: HomeViewModel
 //  private lateinit var navControler: NavController
 
   private var imageUri: Uri? = null
+
+  private val coroutineExceptionHandler = CoroutineExceptionHandler { _, exception ->
+    println("Handle $exception in CoroutineExceptionHandler")
+  }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -56,7 +58,7 @@ class HomeActivity : AppCompatActivity() {
 
     viewModel.user.observe(this) { user ->
       if (user != null) {
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler) {
           val profileUrl = viewModel.getProfilePicUrl(user.uid)
 
           withContext(Dispatchers.Main) {
@@ -72,13 +74,16 @@ class HomeActivity : AppCompatActivity() {
     }
 
     binding.uploadImageButton.setOnClickListener {
-      viewModel.uploadProfile(imageUri!!).addOnSuccessListener {
-//          Toast.makeText(this, "Uploaded")
+      if (imageUri != null) {
+        viewModel.uploadProfile(imageUri!!).addOnSuccessListener {
+          // TODO: save user info
+          Toast.makeText(this, "Sucesfully updated", Toast.LENGTH_SHORT).show()
+        }
       }
-
     }
   }
 
+  @Deprecated("Deprecated in Java")
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)
 

@@ -8,6 +8,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
 import kotlinx.coroutines.tasks.await
+import java.lang.Error
 
 class UserRepository {
   private var auth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -18,15 +19,19 @@ class UserRepository {
     return storage.getReference(auth.uid!!).putFile(uri)
   }
 
-  fun saveUser(uid: String, email: String, bio: String, profile: String): Task<Void> {
-    return db.collection("users").document(uid).set(User(uid, email, bio, profile))
+  fun saveUser(uid: String, email: String, bio: String): Task<Void> {
+    return db.collection("users").document(uid).set(User(uid, email, bio))
 //    document.a = 1;?
 //    return db.child("users").child(uid).setValue(User(uid, email, bio))
   }
 
   suspend fun getProfilePicUrl(userId: String): Uri? {
-    val image = storage.reference.child(userId)
-    return image.downloadUrl.await()
+    try {
+      val image = storage.reference.child(userId)
+      return image.downloadUrl.await()
+    } catch (err: Error) {
+      return null
+    }
 //    val ref = storage.reference.child("images/mountains.jpg")
 //    val uploadTask = ref.putFile(file)
 //
