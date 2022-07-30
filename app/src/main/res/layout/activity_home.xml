@@ -13,4 +13,33 @@
     android:text="Sign out"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
+
+  <Button
+    android:id="@+id/selectImageButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="260dp"
+    android:layout_marginTop="152dp"
+    android:text="Select"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/signOutButton" />
+
+  <Button
+    android:id="@+id/uploadImageButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="260dp"
+    android:layout_marginTop="200dp"
+    android:text="Upload"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/signOutButton" />
+
+  <ImageView
+    android:id="@+id/profilePicture"
+    android:layout_width="151dp"
+    android:layout_height="181dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:srcCompat="@drawable/avatar_image_placeholder" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

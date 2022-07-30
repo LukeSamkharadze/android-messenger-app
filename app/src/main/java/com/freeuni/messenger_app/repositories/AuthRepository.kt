@@ -54,7 +54,7 @@ class AuthRepository(private var application: Application) {
   }
 
   fun saveUser(uid: String, email: String, bio: String): Task<Void> {
-    return db.collection("users").document(uid).set(User(uid, email, bio))
+    return db.collection("users").document(uid).set(User(uid, email, bio, null))
 //    document.a = 1;?
 //    return db.child("users").child(uid).setValue(User(uid, email, bio))
   }
