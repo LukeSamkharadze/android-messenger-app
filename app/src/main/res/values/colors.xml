@@ -10,5 +10,6 @@
   <color name="login_button_color">#258FDF</color>
   <color name="register_text_color">#A59B9B</color>
   <color name="navbar_icon_color">#9B9696</color>
+  <color name="clicked_navbar_icon_color">#FF6386F7</color>
   <color name="transparent">#00000000</color>
 </resources>
