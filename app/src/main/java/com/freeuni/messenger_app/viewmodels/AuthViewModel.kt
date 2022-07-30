@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import com.freeuni.messenger_app.models.User
 import com.freeuni.messenger_app.repositories.AuthRepository
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
@@ -24,5 +25,9 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
 
   fun signOut() {
     repository.signOut()
+  }
+
+  fun saveUser(uid: String, email: String, bio: String): Task<Void> {
+    return repository.saveUser(uid, email, bio)
   }
 }

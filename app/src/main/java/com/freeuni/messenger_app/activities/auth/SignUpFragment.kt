@@ -31,6 +31,7 @@ class SignUpFragment : Fragment() {
     binding.registerButton.setOnClickListener {
       val email = binding.emailEditText.text.toString()
       val password = binding.passwordEditText.text.toString()
+      val bio = binding.bioEditText.text.toString()
 
       if (email.isEmpty()) {
         Toast.makeText(requireContext(), "Nickname is required", Toast.LENGTH_SHORT).show()
@@ -42,7 +43,9 @@ class SignUpFragment : Fragment() {
         return@setOnClickListener
       }
 
-      viewModel.register(email, password)
+      viewModel.register(email, password).onSuccessTask {
+        viewModel.saveUser(it.user!!.uid, email, bio)
+      }
     }
 
     return binding.root
