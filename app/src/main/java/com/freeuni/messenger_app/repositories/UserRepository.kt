@@ -1,35 +1,50 @@
 package com.freeuni.messenger_app.repositories
 
 import android.net.Uri
-import androidx.lifecycle.LiveData
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.freeuni.messenger_app.models.Friend
 import com.freeuni.messenger_app.models.FriendDocument
+import com.freeuni.messenger_app.models.FriendListDocument
 import com.freeuni.messenger_app.models.User
 import com.google.android.gms.tasks.Task
+import com.google.android.gms.tasks.TaskExecutors
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.toObject
-import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
 import kotlinx.coroutines.tasks.await
 import java.lang.Error
-import java.util.*
 
 class UserRepository {
   private var auth: FirebaseAuth = FirebaseAuth.getInstance()
   private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
   private var storage: FirebaseStorage = FirebaseStorage.getInstance()
 
-  private val friendsLiveData: MutableLiveData<List<Friend>> = MutableLiveData()
+  private val friendsLiveData: MutableLiveData<ArrayList<Friend>> = MutableLiveData()
 
   init {
     db.collection("friends").document(auth.uid!!).get().addOnSuccessListener {
-      val friends: List<Friend>? = it.toObject(FriendDocument::class.java)!!.friends
+      try {
 
-      if (friends != null) {
-        friendsLiveData.postValue(friends!!)
+        val friendDocuments = it.toObject(FriendListDocument::class.java)!!.friends
+
+        val friends = arrayListOf<Friend>()
+
+        friendDocuments!!.forEach { friendDocument ->
+          friendDocument.userId!!.get().addOnSuccessListener {
+            friends.add(
+              Friend(
+                it.toObject(User::class.java)!!,
+                friendDocument.lastMessage!!,
+                friendDocument.lastMessageDate!!
+              )
+            )
+            friendsLiveData.postValue(friends)
+          }
+        }
+      } catch (err: Error) {
+
       }
     }
   }
