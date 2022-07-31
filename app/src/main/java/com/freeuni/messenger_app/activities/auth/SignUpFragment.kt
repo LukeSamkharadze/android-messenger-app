@@ -7,11 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
-import com.codingstuff.loginsignupmvvm.viewmodel.AuthViewModel
-import com.freeuni.messenger_app.R
-import com.freeuni.messenger_app.databinding.FragmentSignInBinding
+import com.freeuni.messenger_app.viewmodels.AuthViewModel
 import com.freeuni.messenger_app.databinding.FragmentSignUpBinding
 
 class SignUpFragment : Fragment() {

@@ -1,25 +1,15 @@
 package com.freeuni.messenger_app.activities.home
 
-import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.bumptech.glide.Glide
-import com.codingstuff.loginsignupmvvm.viewmodel.AuthViewModel
 import com.freeuni.messenger_app.R
-import com.freeuni.messenger_app.activities.auth.AuthActivity
-import com.freeuni.messenger_app.databinding.ActivityAuthBinding
-import com.freeuni.messenger_app.databinding.ActivityHomeBinding
 import com.freeuni.messenger_app.databinding.MainPageBinding
 import com.freeuni.messenger_app.viewmodels.HomeViewModel
-import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.*
 
 @Suppress("DEPRECATION")
@@ -116,6 +106,8 @@ class HomeActivity : AppCompatActivity() {
 //    }
 //  }
 //
+
+
 //  @Deprecated("Deprecated in Java")
 //  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 //    super.onActivityResult(requestCode, resultCode, data)

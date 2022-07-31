@@ -1,5 +1,6 @@
 package com.freeuni.messenger_app.activities.auth
 
+import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.codingstuff.loginsignupmvvm.viewmodel.AuthViewModel
 import com.freeuni.messenger_app.R
 import com.freeuni.messenger_app.databinding.FragmentSignInBinding
+import com.freeuni.messenger_app.viewmodels.AuthViewModel
 
 
 class SignInFragment : Fragment() {
@@ -25,9 +26,16 @@ class SignInFragment : Fragment() {
   ): View {
     // Inflate the layout for this fragment
     binding = FragmentSignInBinding.inflate(inflater, container, false)
+//
+//    viewModel =
+//      ViewModelProvider(requireActivity())[AuthViewModel::class.java]
 
-    viewModel =
-      ViewModelProvider(requireActivity())[AuthViewModel::class.java]
+    viewModel = ViewModelProvider(
+      this,
+      ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
+    ).get(
+      AuthViewModel::class.java
+    )
 
     binding.registerButton.setOnClickListener {
       findNavController().navigate(R.id.signUpFragment)
