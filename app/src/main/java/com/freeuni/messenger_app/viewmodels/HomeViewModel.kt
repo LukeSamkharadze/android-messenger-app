@@ -1,17 +1,41 @@
 package com.freeuni.messenger_app.viewmodels
 
 import android.app.Application
+import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import com.freeuni.messenger_app.models.User
 import com.freeuni.messenger_app.repositories.AuthRepository
+import com.freeuni.messenger_app.repositories.UserRepository
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.storage.UploadTask
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
-  private val repository: AuthRepository = AuthRepository(application)
+  private val authRepository: AuthRepository = AuthRepository(application)
+  private val userRepository: UserRepository = UserRepository()
 
-  val user: LiveData<FirebaseUser?> = repository.getFirebaseUserLiveData()
+  val user: LiveData<FirebaseUser?> = authRepository.getFirebaseUserLiveData()
+
+//  val homePageUsers: LiveData<List<FirebaseUser>> = authRepository
+
+  fun uploadProfile(uri: Uri): UploadTask {
+    return userRepository.uploadProfile(uri)
+  }
+
+  suspend fun getProfilePicUrl(userId: String): Uri? {
+    return userRepository.getProfilePicUrl(userId)
+  }
+
+  fun saveUser(uid: String, email: String, bio: String): Task<Void> {
+    return userRepository.saveUser(uid, email, bio)
+  }
 
   fun signOut() {
-    repository.signOut()
+    authRepository.signOut()
+  }
+
+  suspend fun searchUsers(name: String): List<User> {
+    return userRepository.searchUsers(name)
   }
 }
