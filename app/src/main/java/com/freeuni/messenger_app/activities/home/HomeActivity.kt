@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -53,6 +54,10 @@ class HomeActivity : AppCompatActivity() {
         finish()
         startActivity(Intent(this, AuthActivity::class.java))
       }
+    }
+
+    CoroutineScope(Dispatchers.IO).launch {
+      val searchedUsers = viewModel.searchUsers("taz")
     }
 
 
