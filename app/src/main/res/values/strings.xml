@@ -8,4 +8,6 @@
   <string name="NotRegisteredText">Not Registered?</string>
   <string name="SignIn">SIGN IN</string>
   <string name="SignUp">SIGN UP</string>
+  <string name="Update">Update</string>
+  <string name="SignOut">SIGN OUT</string>
 </resources>
