@@ -1,97 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <androidx.fragment.app.FragmentContainerView
+    android:id="@+id/homeNavHostFragment"
+    android:name="androidx.navigation.fragment.NavHostFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    app:defaultNavHost="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    app:navGraph="@navigation/home_nav_graph" />
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:id="@+id/bottomAppBar"
-        app:fabCradleMargin="10dp"
-        app:fabCradleRoundedCornerRadius="10dp"
-        app:fabCradleVerticalOffset="10dp">
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/bottomNavigationView"
-            android:layout_marginRight="16dp"
-            app:menu="@menu/bottom_nav_menu"
-            app:itemIconTint="@drawable/drawer_item"
-            app:itemTextColor="@drawable/drawer_item"
-            android:background="@drawable/transparent_background">
+  <com.google.android.material.bottomappbar.BottomAppBar
+    android:id="@+id/bottomAppBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    app:fabCradleMargin="10dp"
+    app:fabCradleRoundedCornerRadius="10dp"
+    app:fabCradleVerticalOffset="10dp">
 
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
-    </com.google.android.material.bottomappbar.BottomAppBar>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+      android:id="@+id/bottomNavigationView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginRight="16dp"
+      android:background="@drawable/transparent_background"
+      app:itemIconTint="@drawable/drawer_item"
+      app:itemTextColor="@drawable/drawer_item"
+      app:menu="@menu/bottom_nav_menu">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/clicked_navbar_icon_color"
-        android:src="@drawable/add_icon"
-        app:layout_anchor="@id/bottomAppBar"
-        app:tint="@android:color/white"
-        tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+  </com.google.android.material.bottomappbar.BottomAppBar>
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:animateLayoutChanges="true"
-        android:background="@color/header_color"
-        android:elevation="0dp"
-        android:focusable="true"
-        android:foreground="@drawable/header_background"
-        app:elevation="0dp">
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/add"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/clicked_navbar_icon_color"
+    android:src="@drawable/add_icon"
+    app:layout_anchor="@id/bottomAppBar"
+    app:tint="@android:color/white"
+    tools:ignore="SpeakableTextPresentCheck" />
 
-
-
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            app:layout_scrollFlags="scroll|enterAlways">
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
+  <com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appBarLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:animateLayoutChanges="true"
+    android:background="@color/header_color"
+    android:elevation="0dp"
+    android:focusable="true"
+    android:foreground="@drawable/header_background"
+    app:elevation="0dp">
 
 
+    <com.google.android.material.appbar.CollapsingToolbarLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:fitsSystemWindows="true"
+      app:layout_scrollFlags="scroll|enterAlways">
 
-    </com.google.android.material.appbar.AppBarLayout>
-
-<!--    <androidx.viewpager.widget.ViewPager-->
-<!--        android:id="@+id/pager"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        app:layout_behavior="@string/appbar_scrolling_view_behavior" >-->
-<!--        -->
-<!--    </androidx.viewpager.widget.ViewPager>-->
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
 
 
-    <EditText
-        android:id="@+id/search_bar"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_gravity="bottom"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginBottom="14dp"
-        android:background="@drawable/rounded_corner_view"
-        android:backgroundTint="@color/search_bar_color"
-        android:drawableLeft="@drawable/search_icon"
-        android:drawablePadding="6dp"
-        android:hint="Search"
-        android:paddingStart="13dp"
-        android:textColorHint="@color/search_color"
-        app:layout_anchor="@+id/appBarLayout2"
-        app:layout_anchorGravity="center"
-        app:layout_dodgeInsetEdges="top" />
+  </com.google.android.material.appbar.AppBarLayout>
+
+  <!--    <androidx.viewpager.widget.ViewPager-->
+  <!--        android:id="@+id/pager"-->
+  <!--        android:layout_width="match_parent"-->
+  <!--        android:layout_height="match_parent"-->
+  <!--        app:layout_behavior="@string/appbar_scrolling_view_behavior" >-->
+
+  <!--    </androidx.viewpager.widget.ViewPager>-->
 
 
+  <EditText
+    android:id="@+id/search_bar"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:layout_gravity="bottom"
+    android:layout_marginStart="18dp"
+    android:layout_marginTop="14dp"
+    android:layout_marginEnd="18dp"
+    android:layout_marginBottom="14dp"
+    android:background="@drawable/rounded_corner_view"
+    android:backgroundTint="@color/search_bar_color"
+    android:drawableLeft="@drawable/search_icon"
+    android:drawablePadding="6dp"
+    android:hint="Search"
+    android:paddingStart="13dp"
+    android:textColorHint="@color/search_color"
+    app:layout_anchor="@+id/appBarLayout2"
+    app:layout_anchorGravity="center"
+    app:layout_dodgeInsetEdges="top" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
