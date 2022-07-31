@@ -29,11 +29,6 @@ class AuthActivity : AppCompatActivity() {
     viewModel =
       ViewModelProvider(this)[AuthViewModel::class.java]
 
-//    viewModel = ViewModelProvider(
-//      this, ViewModelProvider.AndroidViewModelFactory
-//        .getInstance(application)
-//    )[AuthViewModel::class.java]
-
     viewModel.user.observe(this) {
       if (it != null) {
         finish()

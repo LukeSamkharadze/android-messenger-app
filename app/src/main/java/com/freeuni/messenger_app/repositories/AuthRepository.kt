@@ -23,6 +23,7 @@ class AuthRepository(private var application: Application) {
   private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
   init {
+    Log.e("a", "sheviqmeni")
     emitCurrUser()
     firebaseUserMutableLiveData.postValue(auth.currentUser)
   }
