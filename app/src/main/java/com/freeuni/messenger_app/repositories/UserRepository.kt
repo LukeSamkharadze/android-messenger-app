@@ -49,6 +49,12 @@ class UserRepository {
     }
   }
 
+  suspend fun searchUsers(name: String): List<User> {
+    return db.collection("users")
+      .whereGreaterThanOrEqualTo("email", name)
+      .whereLessThanOrEqualTo("email", name + "\uf8ff").get().await().toObjects(User::class.java)
+  }
+
   fun uploadProfile(uri: Uri): UploadTask {
     return storage.getReference(auth.uid!!).putFile(uri)
   }

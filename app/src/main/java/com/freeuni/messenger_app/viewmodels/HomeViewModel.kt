@@ -4,6 +4,7 @@ import android.app.Application
 import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import com.freeuni.messenger_app.models.User
 import com.freeuni.messenger_app.repositories.AuthRepository
 import com.freeuni.messenger_app.repositories.UserRepository
 import com.google.android.gms.tasks.Task
@@ -32,5 +33,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
   fun signOut() {
     authRepository.signOut()
+  }
+
+  suspend fun searchUsers(name: String): List<User> {
+    return userRepository.searchUsers(name)
   }
 }
