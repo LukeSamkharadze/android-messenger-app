@@ -27,12 +27,17 @@ class SignUpFragment : Fragment() {
       val bio = binding.bioEditText.text.toString()
 
       if (email.isEmpty()) {
-        Toast.makeText(requireContext(), "Nickname is required", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Email is required", Toast.LENGTH_SHORT).show()
         return@setOnClickListener
       }
 
       if (password.isEmpty()) {
         Toast.makeText(requireContext(), "Nickname is required", Toast.LENGTH_SHORT).show()
+        return@setOnClickListener
+      }
+
+      if (bio.isEmpty()) {
+        Toast.makeText(requireContext(), "Bio is required", Toast.LENGTH_SHORT).show()
         return@setOnClickListener
       }
 

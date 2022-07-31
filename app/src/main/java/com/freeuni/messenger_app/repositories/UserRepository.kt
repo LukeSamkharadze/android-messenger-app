@@ -2,6 +2,7 @@ package com.freeuni.messenger_app.repositories
 
 import android.net.Uri
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.freeuni.messenger_app.models.Friend
 import com.freeuni.messenger_app.models.FriendDocument
@@ -23,10 +24,11 @@ class UserRepository {
 
   private val friendsLiveData: MutableLiveData<ArrayList<Friend>> = MutableLiveData()
 
+  private var userLiveData: MutableLiveData<User?> = MutableLiveData()
+
   init {
     db.collection("friends").document(auth.uid!!).get().addOnSuccessListener {
       try {
-
         val friendDocuments = it.toObject(FriendListDocument::class.java)!!.friends
 
         val friends = arrayListOf<Friend>()
@@ -47,6 +49,31 @@ class UserRepository {
 
       }
     }
+
+    db.collection("users").document(auth.currentUser!!.uid).addSnapshotListener { snapshot, e ->
+      if (e != null) {
+        return@addSnapshotListener
+      }
+
+      if (snapshot != null && snapshot.exists()) {
+        userLiveData.postValue(snapshot.toObject(User::class.java))
+      } else {
+        userLiveData.postValue(null)
+      }
+    }
+  }
+
+  fun emitCurrUser() {
+    if (auth.currentUser != null) {
+      db.collection("users").document(auth.currentUser!!.uid).get().addOnSuccessListener {
+        val user = it.toObject(User::class.java)
+        userLiveData.postValue(user)
+      }
+    }
+  }
+
+  fun getUserLiveData(): LiveData<User?> {
+    return userLiveData
   }
 
   suspend fun searchUsers(name: String): List<User> {

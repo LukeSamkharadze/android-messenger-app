@@ -9,16 +9,20 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.freeuni.messenger_app.databinding.ProfilePageBinding
+import com.freeuni.messenger_app.viewmodels.AuthViewModel
 import com.freeuni.messenger_app.viewmodels.HomeViewModel
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.*
 
 class ProfileFragment : Fragment() {
   private lateinit var binding: ProfilePageBinding
   private var imageUri: Uri? = null
-  private lateinit var viewModel: HomeViewModel
+  private val viewModel: HomeViewModel by activityViewModels()
 
   private val coroutineExceptionHandler = CoroutineExceptionHandler { _, exception ->
     Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show()
@@ -30,10 +34,6 @@ class ProfileFragment : Fragment() {
     savedInstanceState: Bundle?
   ): View {
     binding = ProfilePageBinding.inflate(inflater, container, false)
-
-    viewModel =
-      ViewModelProvider(this)[HomeViewModel::
-      class.java]
 
     viewModel.userLiveData.observe(viewLifecycleOwner) { user ->
       if (user != null) {
@@ -56,10 +56,27 @@ class ProfileFragment : Fragment() {
     }
 
     binding.updateButton.setOnClickListener {
+      val email = binding.emailEditText.text.toString()
+      val bio = binding.bioEditText.text.toString()
+
+      if (email.isEmpty()) {
+        Toast.makeText(requireContext(), "Email is required", Toast.LENGTH_SHORT).show()
+        return@setOnClickListener
+      }
+
+      if (bio.isEmpty()) {
+        Toast.makeText(requireContext(), "Bio is required", Toast.LENGTH_SHORT).show()
+        return@setOnClickListener
+      }
+
       if (imageUri != null) {
         viewModel.uploadProfile(imageUri!!).addOnSuccessListener {
-          // TODO: save user info
-//          viewModel.saveUser(binding., )
+          viewModel.saveUser(Firebase.auth.currentUser!!.uid, email, bio).addOnSuccessListener {
+            Toast.makeText(requireContext(), "Successfully updated", Toast.LENGTH_SHORT).show()
+          }
+        }
+      } else {
+        viewModel.saveUser(Firebase.auth.currentUser!!.uid, email, bio).addOnSuccessListener {
           Toast.makeText(requireContext(), "Successfully updated", Toast.LENGTH_SHORT).show()
         }
       }
@@ -74,7 +91,7 @@ class ProfileFragment : Fragment() {
 
     if (requestCode == 100 && resultCode == AppCompatActivity.RESULT_OK) {
       imageUri = data?.data
-      binding.profilePic.setImageURI(imageUri)
+      Glide.with(binding.root).load(imageUri).circleCrop().into(binding.profilePic)
     }
   }
 }

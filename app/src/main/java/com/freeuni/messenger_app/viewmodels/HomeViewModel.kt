@@ -17,7 +17,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
   private val userRepository: UserRepository = UserRepository()
 
   val userFirebaseLiveData: LiveData<FirebaseUser?> = authRepository.getFirebaseUserLiveData()
-  var userLiveData: LiveData<User?> = authRepository.getUserLiveData()
+  var userLiveData: LiveData<User?> = userRepository.getUserLiveData()
 
 //  val homePageUsers: LiveData<List<FirebaseUser>> = authRepository
 
