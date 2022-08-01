@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.freeuni.messenger_app.R
 import com.freeuni.messenger_app.databinding.ChatHeadBinding
+import com.freeuni.messenger_app.extensions.toMessageDate
 import com.freeuni.messenger_app.models.Friend
 
 class FriendsAdapter(var friendsList: List<Friend>) :
@@ -24,8 +25,7 @@ class FriendsAdapter(var friendsList: List<Friend>) :
       .into(holder.binding.profilePic)
     holder.binding.personName.setText(friendsList[position].user.email)
     holder.binding.lastMessage.setText(friendsList[position].lastMessage)
-    //TODO call util
-    holder.binding.msgtime.setText(friendsList[position].lastMessageDate.toString())
+    holder.binding.msgtime.setText(friendsList[position].lastMessageDate.toMessageDate())
   }
 
   override fun getItemCount(): Int {
