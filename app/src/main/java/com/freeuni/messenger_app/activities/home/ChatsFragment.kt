@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,14 +25,26 @@ class ChatsFragment : Fragment() {
   ): View {
     binding = FragmentChatsBinding.inflate(inflater, container, false)
 
-    val friendsList = ArrayList<Friend>()
+    var friendsList = ArrayList<Friend>()
     val friendsAdapter = FriendsAdapter(friendsList)
 
     binding.chatHeads.adapter = friendsAdapter
     binding.chatHeads.layoutManager = LinearLayoutManager(requireContext())
 
     viewModel.friendsLiveData.observe(requireActivity()) {
-      friendsAdapter.friendsList = it
+      friendsList = it
+      friendsAdapter.friendsList =
+        friendsList.filter {
+          return@filter binding.searchBar.text.toString() in it.user.email!!
+        }
+      friendsAdapter.notifyDataSetChanged()
+    }
+
+    binding.searchBar.addTextChangedListener { searchText ->
+      friendsAdapter.friendsList =
+        friendsList.filter {
+          return@filter searchText.toString() in it.user.email!!
+        }
       friendsAdapter.notifyDataSetChanged()
     }
 

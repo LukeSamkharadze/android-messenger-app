@@ -17,12 +17,17 @@ class FriendsAdapter(var friendsList: List<Friend>) :
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
     val binding = ChatHeadBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-    return ViewHolder(binding);
+    return ViewHolder(binding)
   }
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-    Glide.with(holder.itemView.context).load(friendsList[position].profilePicUrl).circleCrop()
-      .into(holder.binding.profilePic)
+    if (friendsList[position].profilePicUrl != null) {
+      Glide.with(holder.itemView.context).load(friendsList[position].profilePicUrl).circleCrop()
+        .into(holder.binding.profilePic)
+    } else {
+      Glide.with(holder.itemView.context).load(R.drawable.avatar_image_placeholder).circleCrop()
+        .into(holder.binding.profilePic)
+    }
     holder.binding.personName.setText(friendsList[position].user.email)
     holder.binding.lastMessage.setText(friendsList[position].lastMessage)
     holder.binding.msgtime.setText(friendsList[position].lastMessageDate.toMessageDate())
@@ -32,7 +37,5 @@ class FriendsAdapter(var friendsList: List<Friend>) :
     return friendsList.size
   }
 
-  class ViewHolder(val binding: ChatHeadBinding) : RecyclerView.ViewHolder(binding.root) {
-
-  }
+  class ViewHolder(val binding: ChatHeadBinding) : RecyclerView.ViewHolder(binding.root)
 }

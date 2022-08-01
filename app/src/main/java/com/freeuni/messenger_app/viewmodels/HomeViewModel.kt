@@ -21,8 +21,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
   val userFirebaseLiveData: LiveData<FirebaseUser?> = authRepository.getFirebaseUserLiveData()
   var userLiveData: LiveData<User?> = userRepository.getUserLiveData()
 
-//  val homePageUsers: LiveData<List<FirebaseUser>> = authRepository
-
   fun uploadProfile(uri: Uri): UploadTask {
     return userRepository.uploadProfile(uri)
   }

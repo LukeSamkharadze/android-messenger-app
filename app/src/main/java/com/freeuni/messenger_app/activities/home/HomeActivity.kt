@@ -32,19 +32,6 @@ class HomeActivity : AppCompatActivity() {
     binding = MainPageBinding.inflate(layoutInflater)
     setContentView(binding.root)
 
-//    binding.bottomNavigationView.setOnNavigationItemSelectedListener {
-//      val a = it.itemId;
-//      val b = R.id.home;
-//
-//
-////      if (a.equals(b)) {
-//////        findNavController().navigate(R.layout.profile_page)
-//////        Log.d("test")
-////      }
-//
-//
-//    }
-
     val navHostFragment =
       supportFragmentManager.findFragmentById(R.id.homeNavHostFragment) as NavHostFragment
     navControler = navHostFragment.navController
