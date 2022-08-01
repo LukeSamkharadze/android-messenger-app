@@ -1,5 +1,6 @@
 package com.freeuni.messenger_app.activities.home
 
+import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.freeuni.messenger_app.R
+import com.freeuni.messenger_app.activities.auth.AuthActivity
 import com.freeuni.messenger_app.databinding.MainPageBinding
 import com.freeuni.messenger_app.viewmodels.HomeViewModel
 import kotlinx.coroutines.*
@@ -48,15 +50,19 @@ class HomeActivity : AppCompatActivity() {
     navControler = navHostFragment.navController
 
     binding.bottomNavigationView.setupWithNavController(navControler)
-    return
-
-
-
-
 
     viewModel =
       ViewModelProvider(this)[HomeViewModel::
       class.java]
+
+    viewModel.userFirebaseLiveData.observe(this) {
+      if (it == null) {
+        finish()
+        startActivity(Intent(this, AuthActivity::class.java))
+      }
+    }
+
+    return
 
 //    val navHostFragment =
 //      supportFragmentManager.findFragmentById(R.id.authNavHostFragment) as NavHostFragment

@@ -10,6 +10,7 @@ import com.freeuni.messenger_app.models.FriendListDocument
 import com.freeuni.messenger_app.models.User
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskExecutors
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -87,7 +88,16 @@ class UserRepository {
   }
 
   fun saveUser(uid: String, email: String, bio: String): Task<Void> {
+//      return auth.currentUser!!.updateEmail(email).addOnCompleteListener { it  ->
+//        if(it.isSuccessful) {
+//
+//        }
+//
+//        Log.e("oe", it.exception.toString())
+//      }
     return db.collection("users").document(uid).set(User(uid, email, bio))
+//    return Tasks.whenAllSuccess(
+//    )
   }
 
   suspend fun getProfilePicUrl(userId: String): Uri? {

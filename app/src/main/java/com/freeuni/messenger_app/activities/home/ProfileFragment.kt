@@ -82,6 +82,10 @@ class ProfileFragment : Fragment() {
       }
     }
 
+    binding.signOutButton.setOnClickListener {
+      viewModel.signOut()
+    }
+
     return binding.root
   }
 
