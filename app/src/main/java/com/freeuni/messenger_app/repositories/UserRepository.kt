@@ -39,14 +39,16 @@ class UserRepository {
             CoroutineScope(Dispatchers.IO).launch {
               val user = it.toObject(User::class.java)!!
 
-              friends.add(
-                Friend(
-                  user,
-                  friendDocument.lastMessage!!,
-                  friendDocument.lastMessageDate!!,
-                  getProfilePicUrl(user.uid!!)
+              for (i in 1..10) {
+                friends.add(
+                  Friend(
+                    user,
+                    friendDocument.lastMessage!!,
+                    friendDocument.lastMessageDate!!,
+                    getProfilePicUrl(user.uid!!)
+                  )
                 )
-              )
+              }
               friendsLiveData.postValue(friends)
             }
           }
