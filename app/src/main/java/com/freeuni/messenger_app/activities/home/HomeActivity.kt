@@ -4,6 +4,9 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ViewGroup
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -12,6 +15,7 @@ import com.freeuni.messenger_app.R
 import com.freeuni.messenger_app.activities.auth.AuthActivity
 import com.freeuni.messenger_app.databinding.MainPageBinding
 import com.freeuni.messenger_app.viewmodels.HomeViewModel
+import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
 import kotlinx.coroutines.*
 
 @Suppress("DEPRECATION")

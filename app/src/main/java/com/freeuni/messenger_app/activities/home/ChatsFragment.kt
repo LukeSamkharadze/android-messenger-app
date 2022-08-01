@@ -9,6 +9,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.freeuni.messenger_app.R
 import com.freeuni.messenger_app.databinding.FragmentChatsBinding
 import com.freeuni.messenger_app.databinding.FragmentSignInBinding
 import com.freeuni.messenger_app.models.Friend
