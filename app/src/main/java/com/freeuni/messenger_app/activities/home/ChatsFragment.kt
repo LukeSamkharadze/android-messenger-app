@@ -18,6 +18,8 @@ class ChatsFragment : Fragment() {
   ): View {
     binding = FragmentChatsBinding.inflate(inflater, container, false)
 
+//    binding.chatHeads.adapter =
+
     return binding.root
   }
 }

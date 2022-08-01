@@ -16,11 +16,13 @@
         <entry key="app/src/main/res/layout/activity_auth.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.11" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
+        <entry key="app/src/main/res/layout/chat_head.xml" value="0.4805128205128205" />
         <entry key="app/src/main/res/layout/fragment_chats.xml" value="0.23541666666666666" />
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.23541666666666666" />
         <entry key="app/src/main/res/layout/main_page.xml" value="0.23541666666666666" />
         <entry key="app/src/main/res/layout/profile_head.xml" value="0.23541666666666666" />
         <entry key="app/src/main/res/layout/profile_page.xml" value="0.23541666666666666" />
+        <entry key="app/src/main/res/layout/search_profile.xml" value="0.4805128205128205" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.26979166666666665" />
       </map>
     </option>

@@ -17,6 +17,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
 import kotlinx.coroutines.tasks.await
 import java.lang.Error
+import java.lang.Exception
 
 class UserRepository {
   private var auth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -46,7 +47,7 @@ class UserRepository {
             friendsLiveData.postValue(friends)
           }
         }
-      } catch (err: Error) {
+      } catch (err: Exception) {
 
       }
     }
