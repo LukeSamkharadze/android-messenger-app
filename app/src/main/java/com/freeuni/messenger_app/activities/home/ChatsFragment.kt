@@ -32,6 +32,7 @@ class ChatsFragment : Fragment() {
     binding.chatHeads.layoutManager = LinearLayoutManager(requireContext())
 
     viewModel.friendsLiveData.observe(requireActivity()) {
+      it.sortBy { -it.lastMessageDate.seconds }
       friendsList = it
       friendsAdapter.friendsList =
         friendsList.filter {
