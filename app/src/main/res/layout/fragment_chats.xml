@@ -2,12 +2,61 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ListView
         android:id="@+id/chatHeads"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/chat_head"/>
+        tools:listitem="@layout/chat_head"
+        android:paddingTop="150dp"/>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:animateLayoutChanges="true"
+        android:background="@color/header_color"
+        android:elevation="0dp"
+        android:focusable="true"
+        android:foreground="@drawable/header_background"
+        app:elevation="0dp"
+        app:layout_constraintTop_toTopOf="@+id/chatHeads">
+
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <EditText
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/rounded_corner_view"
+        android:backgroundTint="@color/search_bar_color"
+        android:drawableLeft="@drawable/search_icon"
+        android:drawablePadding="6dp"
+        android:hint="Search"
+        android:paddingStart="13dp"
+        android:textColorHint="@color/search_color"
+        app:layout_anchor="@+id/appBarLayout2"
+        app:layout_anchorGravity="center"
+        app:layout_constraintTop_toTopOf="@+id/chatHeads"
+        app:layout_dodgeInsetEdges="top"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="14dp"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
