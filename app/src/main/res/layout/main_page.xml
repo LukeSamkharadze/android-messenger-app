@@ -46,29 +46,6 @@
     app:tint="@android:color/white"
     tools:ignore="SpeakableTextPresentCheck" />
 
-  <com.google.android.material.appbar.AppBarLayout
-    android:id="@+id/appBarLayout2"
-    android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:animateLayoutChanges="true"
-    android:background="@color/header_color"
-    android:elevation="0dp"
-    android:focusable="true"
-    android:foreground="@drawable/header_background"
-    app:elevation="0dp">
-
-
-    <com.google.android.material.appbar.CollapsingToolbarLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:fitsSystemWindows="true"
-      app:layout_scrollFlags="scroll|enterAlways">
-
-    </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-
-  </com.google.android.material.appbar.AppBarLayout>
-
   <!--    <androidx.viewpager.widget.ViewPager-->
   <!--        android:id="@+id/pager"-->
   <!--        android:layout_width="match_parent"-->
@@ -78,25 +55,7 @@
   <!--    </androidx.viewpager.widget.ViewPager>-->
 
 
-  <EditText
-    android:id="@+id/search_bar"
-    android:layout_width="match_parent"
-    android:layout_height="55dp"
-    android:layout_gravity="bottom"
-    android:layout_marginStart="18dp"
-    android:layout_marginTop="14dp"
-    android:layout_marginEnd="18dp"
-    android:layout_marginBottom="14dp"
-    android:background="@drawable/rounded_corner_view"
-    android:backgroundTint="@color/search_bar_color"
-    android:drawableLeft="@drawable/search_icon"
-    android:drawablePadding="6dp"
-    android:hint="Search"
-    android:paddingStart="13dp"
-    android:textColorHint="@color/search_color"
-    app:layout_anchor="@+id/appBarLayout2"
-    app:layout_anchorGravity="center"
-    app:layout_dodgeInsetEdges="top" />
+
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
