@@ -1,20 +1,19 @@
 package com.freeuni.messenger_app.repositories
 
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.freeuni.messenger_app.models.Friend
-import com.freeuni.messenger_app.models.FriendDocument
 import com.freeuni.messenger_app.models.FriendListDocument
 import com.freeuni.messenger_app.models.User
 import com.google.android.gms.tasks.Task
-import com.google.android.gms.tasks.TaskExecutors
-import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import java.lang.Error
 import java.lang.Exception
@@ -37,14 +36,19 @@ class UserRepository {
 
         friendDocuments!!.forEach { friendDocument ->
           friendDocument.userId!!.get().addOnSuccessListener {
-            friends.add(
-              Friend(
-                it.toObject(User::class.java)!!,
-                friendDocument.lastMessage!!,
-                friendDocument.lastMessageDate!!
+            CoroutineScope(Dispatchers.IO).launch {
+              val user = it.toObject(User::class.java)!!
+
+              friends.add(
+                Friend(
+                  user,
+                  friendDocument.lastMessage!!,
+                  friendDocument.lastMessageDate!!,
+                  getProfilePicUrl(user.uid!!)
+                )
               )
-            )
-            friendsLiveData.postValue(friends)
+              friendsLiveData.postValue(friends)
+            }
           }
         }
       } catch (err: Exception) {
@@ -72,6 +76,10 @@ class UserRepository {
         userLiveData.postValue(user)
       }
     }
+  }
+
+  fun getFriendsLiveData(): LiveData<ArrayList<Friend>> {
+    return friendsLiveData
   }
 
   fun getUserLiveData(): LiveData<User?> {

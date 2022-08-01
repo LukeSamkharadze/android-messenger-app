@@ -1,9 +1,10 @@
 package com.freeuni.messenger_app.models
 
+import android.net.Uri
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentReference
 
-data class Friend(val user: User, val lastMessage: String, val lastMessageDate: Timestamp)
+data class Friend(val user: User, val lastMessage: String, val lastMessageDate: Timestamp, val profilePicUrl: Uri?)
 
 class FriendDocument {
   var userId: DocumentReference? = null

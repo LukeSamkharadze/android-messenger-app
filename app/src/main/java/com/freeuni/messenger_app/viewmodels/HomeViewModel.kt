@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.freeuni.messenger_app.models.Friend
 import com.freeuni.messenger_app.models.User
 import com.freeuni.messenger_app.repositories.AuthRepository
 import com.freeuni.messenger_app.repositories.UserRepository
@@ -16,6 +17,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
   private val authRepository: AuthRepository = AuthRepository(application)
   private val userRepository: UserRepository = UserRepository()
 
+  val friendsLiveData: LiveData<ArrayList<Friend>> = userRepository.getFriendsLiveData()
   val userFirebaseLiveData: LiveData<FirebaseUser?> = authRepository.getFirebaseUserLiveData()
   var userLiveData: LiveData<User?> = userRepository.getUserLiveData()
 
