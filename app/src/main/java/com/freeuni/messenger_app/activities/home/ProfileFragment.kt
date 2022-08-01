@@ -43,8 +43,10 @@ class ProfileFragment : Fragment() {
         CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler) {
           val profileUrl = viewModel.getProfilePicUrl(user.uid!!)
 
-          withContext(Dispatchers.Main) {
-            Glide.with(binding.root).load(profileUrl).circleCrop().into(binding.profilePic)
+          if (profileUrl != null) {
+            withContext(Dispatchers.Main) {
+              Glide.with(binding.root).load(profileUrl).circleCrop().into(binding.profilePic)
+            }
           }
         }
       }

@@ -39,16 +39,14 @@ class UserRepository {
             CoroutineScope(Dispatchers.IO).launch {
               val user = it.toObject(User::class.java)!!
 
-              for (i in 1..10) {
-                friends.add(
-                  Friend(
-                    user,
-                    friendDocument.lastMessage!!,
-                    friendDocument.lastMessageDate!!,
-                    getProfilePicUrl(user.uid!!)
-                  )
+              friends.add(
+                Friend(
+                  user,
+                  friendDocument.lastMessage!!,
+                  friendDocument.lastMessageDate!!,
+                  getProfilePicUrl(user.uid!!)
                 )
-              }
+              )
               friendsLiveData.postValue(friends)
             }
           }
@@ -115,7 +113,7 @@ class UserRepository {
     try {
       val image = storage.reference.child(userId)
       return image.downloadUrl.await()
-    } catch (err: Error) {
+    } catch (err: Exception) {
       return null
     }
   }
