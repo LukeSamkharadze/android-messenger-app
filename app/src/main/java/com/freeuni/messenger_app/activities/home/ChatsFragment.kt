@@ -27,7 +27,7 @@ class ChatsFragment : Fragment() {
     binding = FragmentChatsBinding.inflate(inflater, container, false)
 
     var friendsList = ArrayList<Friend>()
-    val friendsAdapter = FriendsAdapter(friendsList)
+    val friendsAdapter = FriendsAdapter(requireContext(), friendsList)
 
     binding.chatHeads.adapter = friendsAdapter
     binding.chatHeads.layoutManager = LinearLayoutManager(requireContext())

@@ -38,18 +38,14 @@ class UserRepository {
           friendDocument.userId!!.get().addOnSuccessListener {
             CoroutineScope(Dispatchers.IO).launch {
               val user = it.toObject(User::class.java)!!
-
-              for (i in 0..10) {
-
-                friends.add(
-                  Friend(
-                    user,
-                    friendDocument.lastMessage!!,
-                    friendDocument.lastMessageDate!!,
-                    getProfilePicUrl(user.uid!!)
-                  )
+              friends.add(
+                Friend(
+                  user,
+                  friendDocument.lastMessage!!,
+                  friendDocument.lastMessageDate!!,
+                  getProfilePicUrl(user.uid!!)
                 )
-              }
+              )
               friendsLiveData.postValue(friends)
             }
           }
