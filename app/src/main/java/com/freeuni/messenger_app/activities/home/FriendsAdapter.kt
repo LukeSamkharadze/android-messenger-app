@@ -42,7 +42,7 @@ class FriendsAdapter(val context: Context, var friendsList: List<Friend>) :
           .putExtra("userEmail", friend.user.email)
           .putExtra("userId", friend.user.uid)
           .putExtra("userBio", friend.user.bio)
-          .putExtra("userProfile", friend.profilePicUrl.toString())
+          .putExtra("userProfile", if (friend.profilePicUrl == null) "" else friend.profilePicUrl.toString())
 
       context.startActivity(intent)
     }
