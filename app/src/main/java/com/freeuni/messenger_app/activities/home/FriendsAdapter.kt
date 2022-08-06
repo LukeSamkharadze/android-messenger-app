@@ -19,7 +19,6 @@ class FriendsAdapter(val context: Context, var friendsList: List<Friend>) :
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
     val binding = ChatHeadBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-
     return ViewHolder(binding)
   }
 

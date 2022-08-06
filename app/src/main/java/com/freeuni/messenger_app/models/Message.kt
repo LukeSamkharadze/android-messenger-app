@@ -5,13 +5,14 @@ import com.google.firebase.Timestamp
 class Message {
   var message: String? = null
   var date: Timestamp? = null
-
+  var from: String? = null
 
   constructor() {}
 
-  constructor (message: String, date: Timestamp) {
+  constructor (message: String, date: Timestamp, from: String) {
     this.message = message
     this.date = date
+    this.from = from
   }
 }
 
