@@ -16,4 +16,5 @@
   <color name="search_bar_color">#d4defd</color>
   <color name="search_color">#8a8a9e</color>
   <color name="other_chat">#FF8BB7FF</color>
+  <color name="dark_grey">#3E4042</color>
 </resources>

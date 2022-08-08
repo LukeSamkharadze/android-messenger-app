@@ -10,4 +10,5 @@
   <string name="SignUp">SIGN UP</string>
   <string name="Update">Update</string>
   <string name="SignOut">SIGN OUT</string>
+  <string name="Message">Message</string>
 </resources>
