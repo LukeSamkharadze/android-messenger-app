@@ -16,7 +16,7 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_gchannel"
             android:layout_width="match_parent"
-            android:layout_height="77dp"
+            android:layout_height="89dp"
             android:background="@color/header_color"
             android:theme="@style/Widget.AppCompat.Toolbar"
             app:popupTheme="@style/Theme.AppCompat.Light">
@@ -36,10 +36,13 @@
                 android:text="TextView"
                 android:textColor="@color/white" />
 
+
+
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="150dp"
                 app:srcCompat="@drawable/avatar_image_placeholder" />
 
 
@@ -50,13 +53,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_gchat"
-        android:layout_width="394dp"
-        android:layout_height="631dp"
+        android:layout_width="392dp"
+        android:layout_height="500dp"
         android:layout_marginBottom="16dp"
         app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toTopOf="@+id/text_gchat_indicator"
-        app:layout_constraintTop_toTopOf="@+id/layout_group_chat"
-        tools:layout_editor_absoluteX="-1dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/layout_group_chat" />
 
     <TextView
         android:id="@+id/text_gchat_indicator"
@@ -77,7 +80,10 @@
     <RelativeLayout
         android:id="@+id/layout_gchat_chatbox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_corner_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -86,13 +92,15 @@
             android:id="@+id/edit_gchat_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:layout_toStartOf="@+id/button_gchat_send"
-            android:background="@android:color/transparent"
-            android:hint="Enter Message"
+            android:background="@color/transparent"
+            android:hint="@string/Message"
             android:inputType="text"
             android:maxLines="6"
+            android:minHeight="48dp"
             tools:ignore="Autofill" />
 
         <Button
@@ -100,9 +108,13 @@
             android:layout_width="64dp"
             android:layout_height="48dp"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
             android:background="?attr/selectableItemBackground"
-            android:text="Send"
-            android:textColor="@color/black" />
+            app:icon="@drawable/ic_baseline_check_circle_24"
+            app:iconTint="@color/dark_grey" />
+
 
     </RelativeLayout>
 

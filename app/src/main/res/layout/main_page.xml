@@ -11,8 +11,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:defaultNavHost="true"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     app:navGraph="@navigation/home_nav_graph" />
+
+<!--  <com.agrawalsuneet.dotsloader.loaders.TrailingCircularDotsLoader-->
+<!--      android:layout_width="wrap_content"-->
+<!--      android:layout_height="wrap_content"-->
+<!--      app:trailingcircular_animDelay="200"-->
+<!--      app:trailingcircular_animDuration="1200"-->
+<!--      app:trailingcircular_bigCircleRadius="40dp"-->
+<!--      app:trailingcircular_dotsColor="@color/loader_selected"-->
+<!--      app:trailingcircular_dotsRadius="11dp"-->
+<!--      app:trailingcircular_noOfTrailingDots="5" />-->
 
   <com.google.android.material.bottomappbar.BottomAppBar
     android:id="@+id/bottomAppBar"
@@ -29,6 +38,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginRight="16dp"
+      app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
       android:background="@drawable/transparent_background"
       app:itemIconTint="@drawable/drawer_item"
       app:itemTextColor="@drawable/drawer_item"
@@ -47,13 +57,13 @@
     app:tint="@android:color/white"
     tools:ignore="SpeakableTextPresentCheck" />
 
-  <!--    <androidx.viewpager.widget.ViewPager-->
-  <!--        android:id="@+id/pager"-->
-  <!--        android:layout_width="match_parent"-->
-  <!--        android:layout_height="match_parent"-->
-  <!--        app:layout_behavior="@string/appbar_scrolling_view_behavior" >-->
+<!--      <androidx.viewpager.widget.ViewPager-->
+<!--          android:id="@+id/pager"-->
+<!--          android:layout_width="match_parent"-->
+<!--          android:layout_height="match_parent"-->
+<!--          app:layout_behavior="@string/appbar_scrolling_view_behavior" >-->
 
-  <!--    </androidx.viewpager.widget.ViewPager>-->
+<!--      </androidx.viewpager.widget.ViewPager>-->
 
 
 
