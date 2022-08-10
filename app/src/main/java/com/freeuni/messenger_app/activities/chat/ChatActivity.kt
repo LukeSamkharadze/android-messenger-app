@@ -40,6 +40,8 @@ class ChatActivity : AppCompatActivity() {
     linearLayoutManager.stackFromEnd = true
     binding.recyclerGchat.layoutManager = linearLayoutManager;
 
+    binding.bottomAppBar.background = null
+
     binding.personName.setText(receiverEmail)
     if (receiverProfileUrl != "") {
       Glide.with(binding.root).load(receiverProfileUrl).circleCrop().into(binding.imageView2)

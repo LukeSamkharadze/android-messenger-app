@@ -29,7 +29,7 @@
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.23541666666666666" />
         <entry key="app/src/main/res/layout/item_chat_me.xml" value="0.33229166666666665" />
         <entry key="app/src/main/res/layout/item_chat_other.xml" value="0.33229166666666665" />
-        <entry key="app/src/main/res/layout/main_page.xml" value="0.23541666666666666" />
+        <entry key="app/src/main/res/layout/main_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/profile_head.xml" value="0.23541666666666666" />
         <entry key="app/src/main/res/layout/profile_page.xml" value="0.23541666666666666" />
         <entry key="app/src/main/res/layout/search_profile.xml" value="0.16" />

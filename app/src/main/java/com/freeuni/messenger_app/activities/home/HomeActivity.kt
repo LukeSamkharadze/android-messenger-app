@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.view.get
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -39,6 +40,8 @@ class HomeActivity : AppCompatActivity() {
     val navHostFragment =
       supportFragmentManager.findFragmentById(R.id.homeNavHostFragment) as NavHostFragment
     navControler = navHostFragment.navController
+
+    binding.bottomNavigationView.menu.getItem(1).isEnabled = false
 
     binding.bottomNavigationView.setupWithNavController(navControler)
 
