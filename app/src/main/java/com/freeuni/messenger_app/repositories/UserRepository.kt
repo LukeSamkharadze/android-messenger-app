@@ -28,9 +28,9 @@ class UserRepository {
   private var userLiveData: MutableLiveData<User?> = MutableLiveData()
 
   init {
-    db.collection("friends").document(auth.uid!!).get().addOnSuccessListener {
+    db.collection("friends").document(auth.uid!!).addSnapshotListener { it, error ->
       try {
-        val friendDocuments = it.toObject(FriendListDocument::class.java)!!.friends
+        val friendDocuments = it!!.toObject(FriendListDocument::class.java)!!.friends
 
         val friends = arrayListOf<Friend>()
 
