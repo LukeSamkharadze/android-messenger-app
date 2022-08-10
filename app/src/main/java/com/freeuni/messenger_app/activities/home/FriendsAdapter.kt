@@ -3,9 +3,7 @@ package com.freeuni.messenger_app.activities.home
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.freeuni.messenger_app.R

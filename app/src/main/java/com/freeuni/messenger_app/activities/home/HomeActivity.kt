@@ -53,6 +53,10 @@ class HomeActivity : AppCompatActivity() {
       }
     }
 
+    binding.add.setOnClickListener {
+      navControler.navigate(R.id.searchNewFragment)
+    }
+
     return
 
 //    val navHostFragment =

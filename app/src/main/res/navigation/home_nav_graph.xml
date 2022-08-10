@@ -9,11 +9,38 @@
     android:id="@+id/chatsFragment"
     android:name="com.freeuni.messenger_app.activities.home.ChatsFragment"
     android:label="ChatsFragment"
-    tools:layout="@layout/fragment_chats" />
+    tools:layout="@layout/fragment_chats" >
+    <action
+      android:id="@+id/action_chatsFragment_to_profileFragment"
+      app:destination="@id/profileFragment" />
+    <action
+      android:id="@+id/action_chatsFragment_to_searchNewFragment"
+      app:destination="@id/searchNewFragment" />
+  </fragment>
 
   <fragment
     android:id="@+id/profileFragment"
     android:name="com.freeuni.messenger_app.activities.home.ProfileFragment"
     android:label="ProfileFragment"
-    tools:layout="@layout/profile_page" />
+    tools:layout="@layout/profile_page" >
+    <action
+      android:id="@+id/action_profileFragment_to_searchNewFragment"
+      app:destination="@id/searchNewFragment" />
+    <action
+      android:id="@+id/action_profileFragment_to_chatsFragment"
+      app:destination="@id/chatsFragment" />
+  </fragment>
+  <fragment
+    android:id="@+id/searchNewFragment"
+    android:name="com.freeuni.messenger_app.activities.home.SearchNewFragment"
+    android:label="SearchNewFragment"
+    tools:layout="@layout/search_profile"
+    >
+    <action
+      android:id="@+id/action_searchNewFragment_to_chatsFragment"
+      app:destination="@id/chatsFragment" />
+    <action
+      android:id="@+id/action_searchNewFragment_to_profileFragment"
+      app:destination="@id/profileFragment" />
+  </fragment>
 </navigation>

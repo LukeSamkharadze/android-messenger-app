@@ -7,7 +7,7 @@
         android:title="" />
 
     <item
-        android:id="@+id/placeholder"
+        android:id="@+id/searchNewFragment"
         android:title="" />
 
     <item

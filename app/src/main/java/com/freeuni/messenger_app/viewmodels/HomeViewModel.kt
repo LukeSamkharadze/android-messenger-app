@@ -14,8 +14,8 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.storage.UploadTask
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
-  private val authRepository: AuthRepository = AuthRepository(application)
-  private val userRepository: UserRepository = UserRepository()
+  public val authRepository: AuthRepository = AuthRepository(application)
+  public val userRepository: UserRepository = UserRepository()
 
   val friendsLiveData: LiveData<ArrayList<Friend>> = userRepository.getFriendsLiveData()
   val userFirebaseLiveData: LiveData<FirebaseUser?> = authRepository.getFirebaseUserLiveData()
