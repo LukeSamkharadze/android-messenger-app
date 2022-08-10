@@ -35,14 +35,14 @@ class UserRepository {
         val friends = arrayListOf<Friend>()
 
         friendDocuments!!.forEach { friendDocument ->
-          friendDocument.userId!!.get().addOnSuccessListener {
+          friendDocument.value.userId!!.get().addOnSuccessListener {
             CoroutineScope(Dispatchers.IO).launch {
               val user = it.toObject(User::class.java)!!
               friends.add(
                 Friend(
                   user,
-                  friendDocument.lastMessage!!,
-                  friendDocument.lastMessageDate!!,
+                  friendDocument.value.lastMessage!!,
+                  friendDocument.value.lastMessageDate!!,
                   getProfilePicUrl(user.uid!!)
                 )
               )

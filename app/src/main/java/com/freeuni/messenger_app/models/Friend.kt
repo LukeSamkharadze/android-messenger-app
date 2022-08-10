@@ -21,11 +21,11 @@ class FriendDocument {
 }
 
 class FriendListDocument {
-  var friends: List<FriendDocument>? = null
+  var friends: Map<String, FriendDocument>? = null
 
   constructor() {}
 
-  constructor (friendDocuments: List<FriendDocument>) {
+  constructor (friendDocuments: Map<String, FriendDocument>) {
     this.friends = friendDocuments
   }
 }
