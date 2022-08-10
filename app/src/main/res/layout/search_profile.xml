@@ -38,6 +38,7 @@
 
                 <EditText
                   android:id="@+id/search_bar"
+                  android:textColor="@color/black"
                   android:layout_width="match_parent"
                   android:layout_height="55dp"
                   android:layout_gravity="bottom"

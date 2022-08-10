@@ -40,7 +40,7 @@ class ChatActivity : AppCompatActivity() {
     linearLayoutManager.stackFromEnd = true
     binding.recyclerGchat.layoutManager = linearLayoutManager;
 
-    binding.bottomAppBar.background = null
+    binding.bottomAppBar.setElevation(0F)
 
     binding.personName.setText(receiverEmail)
     if (receiverProfileUrl != "") {
