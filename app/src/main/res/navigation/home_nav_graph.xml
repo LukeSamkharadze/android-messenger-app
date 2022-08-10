@@ -13,9 +13,6 @@
     <action
       android:id="@+id/action_chatsFragment_to_profileFragment"
       app:destination="@id/profileFragment" />
-    <action
-      android:id="@+id/action_chatsFragment_to_searchNewFragment"
-      app:destination="@id/searchNewFragment" />
   </fragment>
 
   <fragment
@@ -24,23 +21,7 @@
     android:label="ProfileFragment"
     tools:layout="@layout/profile_page" >
     <action
-      android:id="@+id/action_profileFragment_to_searchNewFragment"
-      app:destination="@id/searchNewFragment" />
-    <action
       android:id="@+id/action_profileFragment_to_chatsFragment"
       app:destination="@id/chatsFragment" />
-  </fragment>
-  <fragment
-    android:id="@+id/searchNewFragment"
-    android:name="com.freeuni.messenger_app.activities.home.SearchNewFragment"
-    android:label="SearchNewFragment"
-    tools:layout="@layout/search_profile"
-    >
-    <action
-      android:id="@+id/action_searchNewFragment_to_chatsFragment"
-      app:destination="@id/chatsFragment" />
-    <action
-      android:id="@+id/action_searchNewFragment_to_profileFragment"
-      app:destination="@id/profileFragment" />
   </fragment>
 </navigation>

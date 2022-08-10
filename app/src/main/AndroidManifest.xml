@@ -32,6 +32,9 @@
       android:name=".activities.auth.AuthActivity"
       android:exported="false" />
     <activity
+      android:name=".activities.home.SearchNewActivity"
+      android:exported="false" />
+    <activity
       android:name=".activities.home.HomeActivity"
       android:exported="false"
       android:windowSoftInputMode="adjustPan" />

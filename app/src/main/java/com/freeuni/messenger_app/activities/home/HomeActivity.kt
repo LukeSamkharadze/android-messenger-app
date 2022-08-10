@@ -57,7 +57,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     binding.add.setOnClickListener {
-      navControler.navigate(R.id.searchNewFragment)
+      startActivity(Intent(this, SearchNewActivity::class.java))
     }
 
     return

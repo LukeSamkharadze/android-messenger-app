@@ -4,31 +4,38 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.freeuni.messenger_app.databinding.MainPageBinding
 import com.freeuni.messenger_app.databinding.SearchProfileBinding
 import com.freeuni.messenger_app.viewmodels.HomeViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class SearchNewFragment : Fragment() {
+class SearchNewActivity : AppCompatActivity() {
   private lateinit var binding: SearchProfileBinding
-  private val viewModel: HomeViewModel by activityViewModels()
+  private lateinit var viewModel: HomeViewModel
 
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View {
-    binding = SearchProfileBinding.inflate(inflater, container, false)
 
-    val searchedAdapter = SearchAdapter(requireContext(), viewModel.userRepository, ArrayList())
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+
+    binding = SearchProfileBinding.inflate(layoutInflater)
+    setContentView(binding.root)
+
+    viewModel =
+      ViewModelProvider(this)[HomeViewModel::
+      class.java]
+
+    val searchedAdapter = SearchAdapter(this, viewModel.userRepository, ArrayList())
 
     binding.searchedProfiles.adapter = searchedAdapter
-    val linearLayoutManager = LinearLayoutManager(requireContext())
+    val linearLayoutManager = LinearLayoutManager(this)
     linearLayoutManager.stackFromEnd = true
     binding.searchedProfiles.layoutManager = linearLayoutManager;
 
@@ -47,7 +54,5 @@ class SearchNewFragment : Fragment() {
         }
       }
     }
-
-    return binding.root
   }
 }
