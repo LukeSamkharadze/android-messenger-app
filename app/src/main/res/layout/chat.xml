@@ -1,122 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appBarLayout2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@color/header_color">
+    <!--    android:foreground="@drawable/header_background"-->
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/layout_group_chat"
+
+    <com.google.android.material.appbar.CollapsingToolbarLayout
+      android:layout_width="match_parent"
+      android:layout_height="150dp"
+      app:contentScrim="@color/header_color"
+      app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+      <android.widget.Toolbar
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="82dp"
+        android:layout_gravity="center"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:contentInsetStart="72dp"
+        app:layout_collapseMode="pin">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_gchannel"
-            android:layout_width="match_parent"
-            android:layout_height="89dp"
-            android:background="@color/header_color"
-            android:theme="@style/Widget.AppCompat.Toolbar"
-            app:popupTheme="@style/Theme.AppCompat.Light">
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/back_icon"
-                app:backgroundTint="@color/white" />
-
-            <TextView
-                android:id="@+id/personName"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_gravity="top"
-                android:text="TextView"
-                android:textColor="@color/white" />
-
-
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="150dp"
-                app:srcCompat="@drawable/avatar_image_placeholder" />
-
-
-        </androidx.appcompat.widget.Toolbar>
-
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_gchat"
-        android:layout_width="392dp"
-        android:layout_height="500dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constrainedHeight="true"
-        app:layout_constraintBottom_toTopOf="@+id/text_gchat_indicator"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/layout_group_chat" />
-
-    <TextView
-        android:id="@+id/text_gchat_indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/view"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#e0e0e0"
-        app:layout_constraintBottom_toTopOf="@+id/layout_gchat_chatbox" />
-
-    <RelativeLayout
-        android:id="@+id/layout_gchat_chatbox"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/rounded_corner_view"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-
-        <EditText
-            android:id="@+id/edit_gchat_message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
-            android:layout_toStartOf="@+id/button_gchat_send"
-            android:background="@color/transparent"
-            android:hint="@string/Message"
-            android:inputType="text"
-            android:maxLines="6"
-            android:minHeight="48dp"
-            tools:ignore="Autofill" />
 
         <Button
-            android:id="@+id/button_gchat_send"
-            android:layout_width="64dp"
-            android:layout_height="48dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="8dp"
-            android:background="?attr/selectableItemBackground"
-            app:icon="@drawable/ic_baseline_check_circle_24"
-            app:iconTint="@color/dark_grey" />
+          android:id="@+id/button2"
+          android:layout_width="30dp"
+          android:layout_height="30dp"
+          android:background="@drawable/back_icon"
+          app:backgroundTint="@color/white" />
+
+        <TextView
+          android:id="@+id/personName"
+          android:layout_width="wrap_content"
+          android:layout_height="20dp"
+          android:layout_gravity="top"
+          android:text="TextView"
+          android:textColor="@color/white" />
+
+
+        <ImageView
+          android:id="@+id/imageView2"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:layout_marginLeft="150dp"
+          app:srcCompat="@drawable/avatar_image_placeholder" />
+
+      </android.widget.Toolbar>
+
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+  </com.google.android.material.appbar.AppBarLayout>
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recycler_gchat"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:paddingBottom="160dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:listitem="@layout/item_chat_me" />
+
+  <com.google.android.material.bottomappbar.BottomAppBar
+    android:id="@+id/bottomAppBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom">
+
+    <RelativeLayout
+      android:id="@+id/layout_gchat_chatbox"
+      android:layout_width="match_parent"
+      android:layout_height="70dp"
+      android:layout_marginStart="16dp"
+      android:layout_marginBottom="16dp"
+      android:background="@drawable/rounded_corner_view">
+
+      <EditText
+        android:id="@+id/edit_gchat_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="16dp"
+        android:layout_toStartOf="@+id/button_gchat_send"
+        android:background="@color/transparent"
+        android:hint="@string/Message"
+        android:inputType="text"
+        android:maxLines="6"
+        android:minHeight="48dp"
+        tools:ignore="Autofill" />
+
+      <Button
+        android:id="@+id/button_gchat_send"
+        android:layout_width="64dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
+        android:background="?attr/selectableItemBackground"
+        app:icon="@drawable/ic_baseline_check_circle_24"
+        app:iconTint="@color/dark_grey" />
 
 
     </RelativeLayout>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+  </com.google.android.material.bottomappbar.BottomAppBar>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

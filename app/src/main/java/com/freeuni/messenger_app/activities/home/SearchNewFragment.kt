@@ -9,8 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.freeuni.messenger_app.databinding.SearchProfileBinding
-import com.freeuni.messenger_app.models.Friend
-import com.freeuni.messenger_app.models.User
 import com.freeuni.messenger_app.viewmodels.HomeViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,7 +28,9 @@ class SearchNewFragment : Fragment() {
     val searchedAdapter = SearchAdapter(requireContext(), viewModel.userRepository, ArrayList())
 
     binding.searchedProfiles.adapter = searchedAdapter
-    binding.searchedProfiles.layoutManager = LinearLayoutManager(requireContext())
+    val linearLayoutManager = LinearLayoutManager(requireContext())
+    linearLayoutManager.stackFromEnd = true
+    binding.searchedProfiles.layoutManager = linearLayoutManager;
 
     binding.searchBar.doOnTextChanged { text, start, before, count ->
       if (text.isNullOrEmpty()) {

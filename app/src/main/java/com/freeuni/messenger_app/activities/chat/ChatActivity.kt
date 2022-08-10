@@ -36,7 +36,9 @@ class ChatActivity : AppCompatActivity() {
       ChatAdapter(FirebaseAuth.getInstance().currentUser!!.uid, this, emptyList())
 
     binding.recyclerGchat.adapter = chatAdapter
-    binding.recyclerGchat.layoutManager = LinearLayoutManager(this)
+    val linearLayoutManager = LinearLayoutManager(this)
+    linearLayoutManager.stackFromEnd = true
+    binding.recyclerGchat.layoutManager = linearLayoutManager;
 
     binding.personName.setText(receiverEmail)
     if (receiverProfileUrl != "") {
