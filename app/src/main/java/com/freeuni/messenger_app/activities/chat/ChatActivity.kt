@@ -6,14 +6,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.freeuni.messenger_app.activities.home.FriendsAdapter
 import com.freeuni.messenger_app.databinding.ChatBinding
+import com.freeuni.messenger_app.models.Friend
 import com.freeuni.messenger_app.models.FriendDocument
 import com.freeuni.messenger_app.models.Message
 import com.freeuni.messenger_app.models.MessagesListDocument
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import com.google.firebase.firestore.model.DocumentKey
+import com.google.firebase.firestore.model.ResourcePath
 
 class ChatActivity : AppCompatActivity() {
   private lateinit var binding: ChatBinding
@@ -52,18 +56,20 @@ class ChatActivity : AppCompatActivity() {
       messagesId = "${receiverId}-${senderId}"
     }
 
-    FirebaseFirestore.getInstance().collection("messages").document(messagesId).set(emptyMap<String, FriendDocument>(), SetOptions.merge()) .addOnSuccessListener {
-      FirebaseFirestore.getInstance().collection("messages").document(messagesId)
-        .addSnapshotListener { value, error ->
-          if (error == null && value != null) {
-            val messages = value.toObject(MessagesListDocument::class.java);
-            if (messages?.messages != null) {
-              chatAdapter.messages = messages.messages!!
-              chatAdapter.notifyDataSetChanged()
+    FirebaseFirestore.getInstance().collection("messages").document(messagesId)
+      .set(emptyMap<String, FriendDocument>(), SetOptions.merge()).addOnSuccessListener {
+        FirebaseFirestore.getInstance().collection("messages").document(messagesId)
+          .addSnapshotListener { value, error ->
+            if (error == null && value != null) {
+              val messages = value.toObject(MessagesListDocument::class.java);
+              if (messages?.messages != null) {
+                chatAdapter.messages = messages.messages!!
+                chatAdapter.notifyDataSetChanged()
+                binding.recyclerGchat.scrollToPosition(messages.messages!!.size - 1)
+              }
             }
           }
-        }
-    }
+      }
 
     binding.buttonGchatSend.setOnClickListener {
       val message = binding.editGchatMessage.text
@@ -79,7 +85,23 @@ class ChatActivity : AppCompatActivity() {
 
       binding.editGchatMessage.setText("")
 
-//      FirebaseFirestore.getInstance().collection("friends").document("${FirebaseAuth.getInstance().currentUser!!.uid}/")
+
+      val docData = hashMapOf(
+        receiverId to FriendDocument(
+          FirebaseFirestore.getInstance().document("/users/${receiverId}"),
+          message.toString(),
+          Timestamp.now(),
+        )
+      )
+
+      FirebaseFirestore.getInstance().collection("friends")
+        .document(FirebaseAuth.getInstance().currentUser!!.uid)
+        .set(
+          hashMapOf(
+            "friends" to docData
+          ),
+          SetOptions.merge()
+        )
 
       FirebaseFirestore.getInstance().collection("messages").document(messagesId)
         .update("messages", FieldValue.arrayUnion(newMessage))
